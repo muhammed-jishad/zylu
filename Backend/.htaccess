@@ -1,0 +1,13 @@
+
+Options +FollowSymLinks -MultiViews
+RewriteEngine On
+RewriteBase /zylu/Backend/
+
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+
+ErrorDocument 404 /notfound.php
+
+# BLOCK FOR API  
+
+RewriteRule ^employees$ Api.php?action=employees [QSA,L]
